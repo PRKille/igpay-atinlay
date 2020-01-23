@@ -38,8 +38,22 @@ function consonantCheck(word) {
 };
 // sentence input
 function sentenceCheck(userInput) {
-  var splitSentences = userInputs
-}
+  var splitSentences = userInput.split(" ");
+  var entencesay = [];
+  splitSentences.forEach(function(splitSentence) {
+  var vowelResult = (vowelcheck(splitSentence));
+  var consonantResult = consonantCheck(splitSentence);
+    if (vowelResult) {
+      var esultray = vowelResult;
+      entencesay.push(esultray);
+    } else {
+      var esultray = consonantResult;
+      entencesay.push(esultray);
+    }
+  });
+  esultray = entencesay.join(" ");
+  return esultray
+};
 
 $(document).ready(function () {
   $("form").submit(function (event) {
@@ -47,14 +61,8 @@ $(document).ready(function () {
     var sentenceInput = $("input#sentence").val();
     if (!sentenceInput) {
       alert("Please enter some text.")
-    } else if (vowelcheck(sentenceInput)) {
-      var esultray = vowelcheck(sentenceInput);
-      console.log(esultray);
-      alert(esultray);
     } else {
-      var esultray = consonantCheck(sentenceInput);
-      console.log(esultray);
-      alert(esultray);
+      alert(sentenceCheck(sentenceInput));
     }
   });
 });
