@@ -36,6 +36,10 @@ function consonantCheck(word) {
   console.log("function:", ordway);
   return ordway;
 };
+// sentence input
+function sentenceCheck(userInput) {
+  var splitSentences = userInputs
+}
 
 $(document).ready(function () {
   $("form").submit(function (event) {
