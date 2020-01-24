@@ -1,3 +1,41 @@
+
+// Business on top
+function sentenceCheck(userInput) {
+  var splitSentences = userInput.split(" ");
+  var entencesay = [];
+  splitSentences.forEach(function(splitSentence) {
+  var wordOut = punctuationCheck(splitSentence);
+  entencesay.push(wordOut);
+  });
+  var outPut = entencesay.join(" ");
+  return outPut;
+}
+
+function punctuationCheck(word){
+  var punct = word.match(/\W+/);
+  if (punct){
+    var i = word.length - 1;
+    word = word.substr(0, i);
+    var vowelResult = (vowelcheck(word));
+    var consonantResult = consonantCheck(word);
+    if (vowelResult) {
+      var esultray = vowelResult + punct;
+    } else {
+      var esultray = consonantResult + punct;
+    }
+    return esultray
+  } else {
+  var vowelResult = (vowelcheck(word));
+  var consonantResult = consonantCheck(word);
+    if (vowelResult) {
+      var esultray = vowelResult;
+    } else {
+      var esultray = consonantResult;
+    }
+    return esultray
+  };
+}
+  
 function vowelcheck(word) {
   var vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
   var splitWords = word.split("");
@@ -36,25 +74,9 @@ function consonantCheck(word) {
   console.log("function:", ordway);
   return ordway;
 };
-// sentence input
-function sentenceCheck(userInput) {
-  var splitSentences = userInput.split(" ");
-  var entencesay = [];
-  splitSentences.forEach(function(splitSentence) {
-  var vowelResult = (vowelcheck(splitSentence));
-  var consonantResult = consonantCheck(splitSentence);
-    if (vowelResult) {
-      var esultray = vowelResult;
-      entencesay.push(esultray);
-    } else {
-      var esultray = consonantResult;
-      entencesay.push(esultray);
-    }
-  });
-  esultray = entencesay.join(" ");
-  return esultray
-};
 
+
+// User Interface
 $(document).ready(function () {
   $("form").submit(function (event) {
     event.preventDefault();
